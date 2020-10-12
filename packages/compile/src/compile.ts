@@ -66,20 +66,27 @@ function* bufferLines() {
     }
   }
 }
-
+var compile_error = false;
 /**
  * run a command, forwarding data to arbitrary logger.
  * invokes callback when process exits, error on nonzero exit code.
  */
 export const runCommand = promisify(function(
   command: any,
-  options: { cwd: any; logger: any; input: any; events: any },
+  options: {
+    cwd: any;
+    logger: any;
+    input: any;
+    events: any;
+    reason: any;
+    compileError: any;
+  },
   callback: any
 ) {
   if (options.logger == null) {
     options.logger = console;
   }
-  const { cwd, logger, input, events } = options;
+  const { cwd, logger, input, events, reason, compileError } = options;
   const child = exec(command, { cwd, input });
   let warnings = [];
   let errors = [];
@@ -99,19 +106,32 @@ export const runCommand = promisify(function(
   };
   const log = buffer(logger.log);
   const warn = buffer(logger.warn);
-  child.stderr.on("data", (data: any) => {
-    if (data.search("error") >= 0) {
-      const errorStr = chalk.red("   " + data.toString());
-      errors.push(errorStr);
-      warn(errorStr);
-    } else if (data.search("warning") >= 0) {
-      const warningStr = chalk.yellow("   " + data.toString());
-      warnings.push(warningStr);
-      log(warningStr);
-    } else {
-      log(data.toString());
-    }
-  });
+
+  if (reason === "schema" && !compileError) {
+    child.stderr.on("data", (data: any) => {
+      if (data.search("error") >= 0 && data.search("--> src/") >= 0) {
+        events.emit("schemaGenerator:fail");
+      }
+    });
+  } else if (reason === "compile") {
+    child.stderr.on("data", (data: any) => {
+      if (data.search("error") >= 0) {
+        const errorStr = chalk.red("   " + data.toString());
+        compile_error = true;
+        errors.push(errorStr);
+        //warn(errorStr);
+        callback({ warnings, errors, compile_error });
+      } else if (data.search("warning") >= 0 && data.search("--> src/")) {
+        const warningStr = chalk.yellow("   " + data.toString());
+        warnings.push(warningStr);
+        //log(warningStr);
+      } else {
+        log(data.toString());
+      }
+    });
+  } else {
+    callback({ warnings, errors, compile_error });
+  }
 
   child.on("close", function(code: string | number) {
     // close streams to flush unterminated lines
@@ -123,7 +143,7 @@ export const runCommand = promisify(function(
       var err = new Error("Unknown exit code: " + code);
       return callback(err);
     }
-
-    callback({ warnings, errors });
+    compile_error = false;
+    callback({ warnings, errors, compile_error });
   });
 });

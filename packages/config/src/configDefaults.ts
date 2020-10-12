@@ -1,6 +1,7 @@
 import * as path from "path";
 import HoustonConfig from "./";
 import assignIn from "lodash.assignin";
+import { config } from "process";
 const Provider = require("@terra-money/houston-provider");
 
 export const getInitialConfig = ({
@@ -22,27 +23,10 @@ export const getInitialConfig = ({
     network,
     networks: {},
     verboseRpc: false,
-    gas: null,
-    gasPrice: null,
-    from: null,
-    confirmations: 0,
-    timeoutBlocks: 0,
-    production: false,
-    skipDryRun: false,
     build: null,
-    resolver: null,
-    cosmwasmpm: {
-      ipfs_host: "ipfs.infura.io",
-      ipfs_protocol: "https",
-      registry: "0x8011df4830b4f696cd81393997e5371b93338878",
-      install_provider_uri:
-        "https://ropsten.infura.io/v3/26e88e46be924823983710becd929f36",
-    },
-    ens: {
-      enabled: false,
-      registryAddress: null,
-    },
     logger: console,
+    artifactor: null,
+    from: null,
   };
 };
 
@@ -54,11 +38,7 @@ export const configProps = ({
   const resolveDirectory = (value: string): string =>
     path.resolve(configObject.working_directory, value);
 
-  const defaultTXValues = {
-    gas: 6721975,
-    gasPrice: 20000000000, // 20 gwei,
-    from: null,
-  };
+  const defaultTXValues = { from: null }; // 20 gwei,
 
   return {
     // These are already set.
@@ -68,23 +48,17 @@ export const configProps = ({
     networks() {},
     verboseRpc() {},
     build() {},
-    resolver() {},
     artifactor() {},
-    ethpm() {},
     logger() {},
-    compilers() {},
-    ens() {},
-
-    build_directory: {
-      default: () => path.join(configObject.working_directory, "build"),
+    contracts_build_directory: {
+      default: () => path.join(configObject.working_directory, "wasm"),
       transform: resolveDirectory,
+    },
+    schemas_directory: {
+      default: () => path.join(configObject.working_directory, "schemas"),
     },
     contracts_directory: {
       default: () => path.join(configObject.working_directory, "contracts"),
-      transform: resolveDirectory,
-    },
-    contracts_build_directory: {
-      default: () => path.join(configObject.build_directory, "contracts"),
       transform: resolveDirectory,
     },
     migrations_directory: {
@@ -92,7 +66,7 @@ export const configProps = ({
       transform: resolveDirectory,
     },
     migrations_file_extension_regexp() {
-      return /^\.(js|es6?)$/;
+      return /^\.(js|ts|es6?)$/;
     },
     test_directory: {
       default: () => path.join(configObject.working_directory, "test"),
@@ -100,10 +74,6 @@ export const configProps = ({
     },
     test_file_extension_regexp() {
       return /.*\.(js|ts|es|es6|jsx|sol)$/;
-    },
-    example_project_directory: {
-      default: () => path.join(configObject.truffle_directory, "example"),
-      transform: resolveDirectory,
     },
     network_id: {
       get() {
@@ -133,14 +103,9 @@ export const configProps = ({
           config = {};
         }
 
-        config = assignIn({}, defaultTXValues, config);
+        config = assignIn({}, config);
 
         return config;
-      },
-      set() {
-        throw new Error(
-          "Don't set config.network_config. Instead, set config.networks with the desired values."
-        );
       },
     },
     from: {
@@ -154,34 +119,6 @@ export const configProps = ({
       set() {
         throw new Error(
           "Don't set config.from directly. Instead, set config.networks and then config.networks[<network name>].from"
-        );
-      },
-    },
-    gas: {
-      get() {
-        try {
-          return configObject.network_config.gas;
-        } catch (e) {
-          return defaultTXValues.gas;
-        }
-      },
-      set() {
-        throw new Error(
-          "Don't set config.gas directly. Instead, set config.networks and then config.networks[<network name>].gas"
-        );
-      },
-    },
-    gasPrice: {
-      get() {
-        try {
-          return configObject.network_config.gasPrice;
-        } catch (e) {
-          return defaultTXValues.gasPrice;
-        }
-      },
-      set() {
-        throw new Error(
-          "Don't set config.gasPrice directly. Instead, set config.networks and then config.networks[<network name>].gasPrice"
         );
       },
     },
@@ -199,48 +136,6 @@ export const configProps = ({
       set() {
         throw new Error(
           "Don't set config.provider directly. Instead, set config.networks and then set config.networks[<network name>].provider"
-        );
-      },
-    },
-    confirmations: {
-      get() {
-        try {
-          return configObject.network_config.confirmations;
-        } catch (e) {
-          return 0;
-        }
-      },
-      set() {
-        throw new Error(
-          "Don't set config.confirmations directly. Instead, set config.networks and then config.networks[<network name>].confirmations"
-        );
-      },
-    },
-    production: {
-      get() {
-        try {
-          return configObject.network_config.production;
-        } catch (e) {
-          return false;
-        }
-      },
-      set() {
-        throw new Error(
-          "Don't set config.production directly. Instead, set config.networks and then config.networks[<network name>].production"
-        );
-      },
-    },
-    timeoutBlocks: {
-      get() {
-        try {
-          return configObject.network_config.timeoutBlocks;
-        } catch (e) {
-          return 0;
-        }
-      },
-      set() {
-        throw new Error(
-          "Don't set config.timeoutBlocks directly. Instead, set config.networks and then config.networks[<network name>].timeoutBlocks"
         );
       },
     },

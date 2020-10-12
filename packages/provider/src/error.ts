@@ -1,4 +1,4 @@
-import HoustonError from "houston-error";
+import HoustonError from "@terra-money/houston-error";
 
 // HACK: string comparison seems to be only way to identify being unable to
 // connect to RPC node.

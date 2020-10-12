@@ -1,7 +1,14 @@
 {
   "name": "@terra-money/houston-init",
-  "version": "0.0.6",
+  "version": "0.2.1",
   "description": "houston project initialization functionality",
+  "license": "MIT",
+  "author": "Hyungsuk Kang <hskang9@gmail.com>",
+  "homepage": "https://github.com/terra-project/houston/tree/master/packages/init#readme",
+  "repository": "https://github.com/terra-project/houston/tree/master/packages/init",
+  "bugs": {
+    "url": "https://github.com/terra-project/houston/issues"
+  },
   "main": "dist/index.js",
   "scripts": {
     "start": "npm run build && npm run global",
@@ -18,24 +25,16 @@
     "publish-package": "npm run build && npm publish",
     "docs": "typedoc --out docs ./src"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/houston/packages/houston-config.git"
-  },
   "keywords": [
     "terra",
     "houston",
     "init"
   ],
-  "author": "Hyungsuk Kang <hskang9@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/houston/houston-config/issues"
-  },
-  "homepage": "https://github.com/houston/houston-config#readme",
   "dependencies": {
+    "@terra-money/houston-config": "0.1.8",
     "@types/node": "^14.10.0",
     "find-up": "^4.1.0",
+    "json-schema-class": "0.0.1",
     "lodash": "^4.17.19",
     "ora": "^5.0.0",
     "original-require": "^1.0.1"

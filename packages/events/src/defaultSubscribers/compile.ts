@@ -1,19 +1,40 @@
+import { runInThisContext } from "vm";
+
 const OS = require("os");
+const Ora = require("ora");
 
 export default {
   initialization: function() {
     this.logger = console;
+    this.ora = null;
   },
   handlers: {
     "compile:start": [
       function() {
-        this.logger.log(OS.EOL + `Compiling your contracts...`);
+        this.logger.log(OS.EOL + `🛠 Compiling your contracts...`);
         this.logger.log(`===========================`);
       },
     ],
     "compile:fail": [
-      function(contractDirectory) {
-        this.logger.log(`> Compilation failed at ${contractDirectory}`);
+      function({ contractDirectory, errors }) {
+        this.logger.log(
+          OS.EOL + `> 😱 Compilation failed at ${contractDirectory}` + OS.EOL
+        );
+        errors.forEach((err) => {
+          this.logger.log(err);
+        });
+      },
+    ],
+    "compile:warn": [
+      function({ contractDirectory, warnings }) {
+        this.logger.log(
+          OS.EOL +
+            `> ⚠️ Compilation warnings encountered at ${contractDirectory}` +
+            OS.EOL
+        );
+        warnings.forEach((warn) => {
+          this.logger.log(warn);
+        });
       },
     ],
     "compile:succeed": [
@@ -22,41 +43,19 @@ export default {
         if (true /*Object.keys(compilersInfo).length > 0*/) {
           this.logger.log(`> WASM written to ${wasmBuildDirectory}`);
           this.logger.log(`> Schemas written to ${schemaBuildDirectory}`);
-          this.logger.log(`> Compiled successfully using:`);
-          /*
-          const maxLength = Object.keys(compilersInfo)
-            .map((name) => name.length)
-            .reduce((max, length) => (length > max ? length : max), 0);
-
-          for (const name in compilersInfo) {
-            const padding = " ".repeat(maxLength - name.length);
-
-            this.logger.log(
-              `   - ${name}:${padding} ${compilersInfo[name].version}`
-            );
-          }
-          */
         }
-        this.logger.log();
       },
     ],
     "compile:sourcesToCompile": [
       function({ sourceDirName }) {
         if (!sourceDirName) return;
-        this.logger.log("> Compiling " + sourceDirName);
-      },
-    ],
-    // TODO: Aggregate warnings / errors when working with multiple cosmwasm cargos
-    "compile:warnings": [
-      function({ warnings }) {
-        this.logger.log("> Compilation warnings encountered:");
-        this.logger.log(`${OS.EOL}    ${warnings.join()}`);
+        this.logger.log("> 🔨 Compiling " + sourceDirName);
       },
     ],
     "compile:nothingToCompile": [
       function() {
         this.logger.log(
-          `> Everything is up to date, there is nothing to compile.`
+          `> 📭 No contract cargos in contracts folder, there is nothing to compile.`
         );
       },
     ],

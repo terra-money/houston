@@ -1,7 +1,14 @@
 {
   "name": "@terra-money/houston-provider",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Network provider module for Houston",
+  "license": "MIT",
+  "author": "Hyungsuk Kang <hskang9@gmail.com>",
+  "homepage": "https://github.com/terra-project/houston/tree/master/packages/provider#readme",
+  "repository": "https://github.com/terra-project/houston/tree/master/packages/provider",
+  "bugs": {
+    "url": "https://github.com/terra-project/houston/issues"
+  },
   "main": "dist/index.js",
   "scripts": {
     "start": "npm run build && npm run global",
@@ -19,17 +26,11 @@
     "publish-package": "npm run build && npm publish",
     "docs": "typedoc --out docs ./src"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/caikang9/houston/provider"
-  },
   "keywords": [
     "provider",
     "terra",
     "tool"
   ],
-  "author": "Hyungsuk Kang <hskang9@gmail.com>",
-  "license": "GPL-3.0-or-later",
   "devDependencies": {
     "@liftr/tscov": "^1.4.7",
     "@types/node": "^14.0.27",
@@ -41,9 +42,9 @@
     "typescript": "^3.9.5"
   },
   "dependencies": {
+    "@terra-money/houston-error": "^0.0.2",
     "@terra-money/terra.js": "^0.4.11",
-    "debug": "^4.1.1",
-    "houston-error": "^0.0.1"
+    "debug": "^4.1.1"
   },
   "publishConfig": {
     "access": "public"

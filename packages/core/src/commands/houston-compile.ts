@@ -4,9 +4,9 @@ const program = new commander.Command();
 import compile from "@terra-money/houston-compile";
 
 program
-  .command("compile [contracts]")
+  .command("compile [name]")
   .name("compile")
-  .usage("[contracts]")
+  .usage("[name]")
   .description("create a Houston project")
   .action(compile)
   .parse(process.argv);

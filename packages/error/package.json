@@ -1,29 +1,28 @@
 {
   "name": "@terra-money/houston-error",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "Simple module that allows native Error objects to be extended",
+  "license": "MIT",
+  "author": "Hyungsuk Kang <hskang9@gmail.com>",
+  "homepage": "https://github.com/terra-project/houston/tree/master/packages/error#readme",
+  "repository": "https://github.com/terra-project/houston/tree/master/packages/error",
+  "bugs": {
+    "url": "https://github.com/terra-project/houston/issues"
+  },
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "prepare": "yarn build"
   },
-  "repository": "https://github.com/caikang9/houston/tree/master/packages/error",
   "keywords": [
-    "cosmos",
-    "houston",
-    "error",
-    "extendable"
+    "cli",
+    "dev-tool"
   ],
-  "author": "Hyungsuk Kang <hskang9@gmail.com>",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/caikang9/houston"
-  },
-  "homepage": "https://github.com/caikang9/houston/tree/master/packages/error#readme",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
+    "@terra-money/houston-add": "^0.0.4",
     "extendable-error": "^0.1.7"
   },
   "devDependencies": {

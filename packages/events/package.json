@@ -1,13 +1,13 @@
 {
   "name": "@terra-money/houston-events",
-  "version": "0.0.5",
+  "version": "0.1.6",
   "description": "Utility for handling events in Houston",
-  "license": "GPLv3",
+  "license": "MIT",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
-  "homepage": "https://github.com/caikang9/houston/tree/master/packages/event#readme",
-  "repository": "https://github.com/caikang9/houston/tree/master/packages/event",
+  "homepage": "https://github.com/terra-project/houston/tree/master/packages/events#readme",
+  "repository": "https://github.com/terra-project/houston/tree/master/packages/events",
   "bugs": {
-    "url": "https://github.com/caikang9/houston/issues"
+    "url": "https://github.com/terra-project/houston/issues"
   },
   "main": "dist/index.js",
   "scripts": {
@@ -40,7 +40,7 @@
   },
   "keywords": [
     "config",
-    "cosmos",
+    "Terra",
     "houston"
   ],
   "publishConfig": {

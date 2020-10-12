@@ -4,7 +4,7 @@ const program = new commander.Command();
 import initProject from "@terra-money/houston-init";
 
 program
-  .command("[options]")
+  .command("<name> [options]")
   .name("init")
   .usage("[options]")
   .option("--force <dir>", "overwrite forcefully in the directory")

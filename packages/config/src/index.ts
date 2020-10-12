@@ -7,8 +7,8 @@ import { EventManager } from "@terra-money/houston-events";
 import Configstore from "configstore";
 import { getInitialConfig, configProps } from "./configDefaults";
 
-const DEFAULT_CONFIG_FILENAME = "houston-config.js";
-const BACKUP_CONFIG_FILENAME = "houston.js"; // old config filename
+const DEFAULT_CONFIG_FILENAME = "package.json";
+const BACKUP_CONFIG_FILENAME = "houston-config.js";
 
 class HoustonConfig {
   [key: string]: any;
@@ -213,7 +213,7 @@ class HoustonConfig {
   }
 
   public static getUserConfig(): Configstore {
-    return new Configstore("truffle", {}, { globalConfigPath: true });
+    return new Configstore("houston", {}, { globalConfigPath: true });
   }
 
   public static getTruffleDataDirectory(): string {

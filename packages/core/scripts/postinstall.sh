@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # Install Rust
-curl https://sh.rustup.rs -sSf | sh -s -- -y
+# TODO: fix rust install bug problem
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 # Set Rust PATH
 source $HOME/.cargo/env
-# Set Rust as stable version
-rustup default stable
 # Update Rust 
 rustup update stable
+rustup update nightly
 # Get wasm target option
 rustup target list --installed
+rustup default nightly
 rustup target add wasm32-unknown-unknown

@@ -3,12 +3,12 @@
   "description": "houston compile functionality",
   "license": "MIT",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
-  "homepage": "https://github.com/hskang9/houston/tree/master/packages/compile#readme",
-  "repository": "https://github.com/hskang9/houston/tree/master/packages/compile",
+  "homepage": "https://github.com/terra-project/houston/tree/master/packages/compile#readme",
+  "repository": "https://github.com/terra-project/houston/tree/master/packages/compile",
   "bugs": {
-    "url": "https://github.com/caikang9/houston/issues"
+    "url": "https://github.com/terra-project/houston/issues"
   },
-  "version": "0.1.5",
+  "version": "0.2.0",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
@@ -17,9 +17,8 @@
   },
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@terra-money/houston-config": "^0.0.5",
-    "@terra-money/houston-events": "^0.0.3",
-    "@terra-money/houston-provider": "^0.0.2",
+    "@terra-money/houston-config": "^0.1.2",
+    "bluebird": "^3.7.2",
     "chalk": "^4.1.0",
     "configstore": "^4.0.0",
     "find-up": "^2.1.0",
@@ -43,9 +42,8 @@
     "ts-node": "8.10.2"
   },
   "keywords": [
-    "config",
-    "cosmos",
-    "houston"
+    "cli",
+    "dev-tool"
   ],
   "publishConfig": {
     "access": "public"

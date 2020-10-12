@@ -1,22 +1,19 @@
 import { red, green, cyan, yellow } from "kleur";
-import * as figlet from "figlet";
-import * as similiarity from 'string-similarity';
+import * as similiarity from "string-similarity";
 
-import { ConsoleMessage } from "../models/console-message";
+export enum ConsoleMessage {
+  TITLE = "Houston",
+  BANNER = "Smart contract tool for cosmwasm",
+  ERROR = "ERROR: ",
+  SUCCESS = "SUCCESS: ",
+  INFO = "INFO: ",
+  GENERATE = "GENERATE: ",
+  CREATE = "CREATE: ",
+  UPDATE = "UPDATE: ",
+  START_GENERATING = "Start generating contract boilerplate...",
+}
 
 const newLine = "\n";
-
-export const showBanner = (): void => {
-  const chalk = require("chalk");
-  console.log(
-    chalk.hex("#026DD9").bold(
-      figlet.textSync("houston", {
-        horizontalLayout: "full",
-        font: "Sub-Zero",
-      })
-    )
-  );
-};
 
 export const showError = (message: string | Error): void => {
   console.error(red(ConsoleMessage.ERROR) + message);
@@ -47,6 +44,8 @@ export const showUpdate = (fileName: string, filePath: string): void => {
 };
 
 export const suggestCommand = (cmd: string, cmds: any) => {
-  const matches = similiarity.findBestMatch(cmd, cmds)
-  console.log(yellow(`Invalid command. Did you mean ${matches.bestMatch.target}?`))
-}
+  const matches = similiarity.findBestMatch(cmd, cmds);
+  console.log(
+    yellow(`Invalid command. Did you mean ${matches.bestMatch.target}?`)
+  );
+};

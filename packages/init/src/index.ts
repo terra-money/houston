@@ -1,20 +1,19 @@
 import HoustonConfig from "@terra-money/houston-config";
 
-export const initProject = (option: any) => {
+export const initProject = (name: any, options: any) => {
   /**
    * Initializes starter project for cosmwasm development
    *
-   * @param option
+   * @param options options for the command
    *
    * @returns none
    */
-  const { copyFiles } = require("./copyFiles");
+  const { copyFiles, changeName } = require("./processes");
   let fse = require("fs-extra");
   const config = HoustonConfig.default();
-
   let destinationPath;
-  if (option.force && option.force.length > 0) {
-    destinationPath = option.force;
+  if (options.force && options.force.length > 0) {
+    destinationPath = options.force;
     fse.ensureDirSync(destinationPath);
   } else {
     destinationPath = config.working_directory;
@@ -23,11 +22,14 @@ export const initProject = (option: any) => {
   const { events } = config;
   events.emit("init:start");
   copyFiles(destinationPath, config)
-    .then(async () => {
-      await events.emit("init:succeed");
+    .then(() => {
+      if (name) {
+        changeName(destinationPath, name);
+      }
+      events.emit("init:succeed");
     })
-    .catch(async (error: any) => {
-      await events.emit("init:fail", { error });
+    .catch((error: any) => {
+      events.emit("init:fail", { error });
     });
 };
 

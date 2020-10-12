@@ -1,0 +1,29 @@
+{
+  "name": "houston-sandbox",
+  "version": "0.0.0",
+  "description": "a sandbox environment to run houston migration script",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rm -rf node-modules"
+  },
+  "repository": {},
+  "keywords": [],
+  "author": "Hyungsuk Kang <hskang9@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@terra-money/terra.js": "^0.4.19-beta.1",
+    "@types/node": "^14.10.0",
+    "fs-extra": "^9.0.1",
+    "module": "^1.2.5",
+    "ts-node": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.27",
+    "tslint": "^5.12.1",
+    "typescript": "^3.9.7"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "3b571d9da1d4b708e81f3063c499f49ea1ab7c9f"
+}

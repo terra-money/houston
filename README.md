@@ -12,30 +12,27 @@
 <a href="https://www.npmjs.org/package/@terra-money/houston"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen?style=flat-square&logo=github"></a>
 <a href="https://www.npmjs.org/package/@terra-money/houston"><img src="https://img.shields.io/npm/l/@terra-money/houston"></a>
 
-
 <br>
 <a href="https://npmjs.com/package/@terra-money/houston"><img src="https://github.com/terra-project/houston/blob/master/assets/nodeico.svg"></a>
 
 </p>
 
-<p align="center"><strong>Houston is a development environment, testing framework and smart contract pipeline for Terra, aiming to make life as an Terra developer easier.</strong>
+<p align="center"><strong>Houston is a development environment, testing framework and smart contract pipeline for Terra, aiming to make life as a Terra developer easier.</strong>
 </p>
 
 ## Features
 
 - Built-in smart contract compilation, linking, deployment and wasm binary management.
-- Automated contract testing with Mocha and Chai.
 - Configurable build pipeline with support for custom build processes.
 - Scriptable deployment & migrations framework.
-- Network management for deploying to nany Terra networks.
-- Interactive console for direct contract communication.
-- Instant rebuilding of wasm binaries during development.
+- Network management for deploying to Terra's public & private networks.
+- Instant rebuilding of webassembly binaries during development.
 
 <br>
 
 ## Installation
 
-*Houston will gracefully setup **a stable version of rust compiler** and **wasm target** to develop smart contracts on Terra blockchain.*
+_Houston will gracefully setup **a stable version of rust compiler** and **wasm target** to develop smart contracts on Terra blockchain._
 
 Grab the latest version of [NPM](https://www.npmjs.com/package/@terra-money/houston):
 
@@ -44,22 +41,29 @@ npm install -g houston
 ```
 
 ## Documentation
+
 To get more information on Houston, check out the documentation.
 
 <a href="https://terraform-labs.gitbook.io/houston/"><img src="https://github.com/terra-project/houston/blob/master/assets/gitbook.png" width="300"></a>
 
-
 ## Kickstart
-There are five core commands: 
-init: for project initialization
-compile: for compiling contracts
-deploy: for deploying contracts to blockchain
-add: for adding or downloading contract cargo projects
+
+**Houston has five commands to help smart contract development:**
+
+`init`: for project initialization
+
+`compile`: for compiling contracts
+
+`deploy`: for deploying contracts to blockchain
+
+`add`: for adding or downloading contract cargo projects
+
+`test`: for executing test scripts with Mocha and Chai
 
 To get help on each command, run `houston help <command>`.
 
-
 ### Initialize project
+
 ```bash
 mkdir myProject
 cd myProject
@@ -91,9 +95,11 @@ myProject/
 ### Compile contracts
 
 Set current working directory inside of the project directory
+
 ```shell
 houston compile --contracts [contractName]
 ```
+
 All contract cargos in the `contracts` directory will be compiled as default.
 
 `[contractName]` is an optional parameter to specify which cargo to compile with the command.
@@ -111,8 +117,9 @@ After comilation of each contract, you'll get the directories for compiled resul
 > WASM written to /Users/terraformlabs/myProject/wasm
 > Schemas written to /Users/terraformlabs/myProject/schemas/starter_schemas
 ```
+
 Compiled WASM binaries will be placed in `wasm` directory as `<cargo name>`.wasm.
-Generated collection of schema json files will be placed as a directory with the name `<cargo name>-schema` in `schema` directory. 
+Generated collection of schema json files will be placed as a directory with the name `<cargo name>-schema` in `schema` directory.
 
 You will have the new project structure with the following items:
 
@@ -131,6 +138,7 @@ myProject/
 ```
 
 ## Contributions
+
 <a href="https://github.com/terra-project/houston/graphs/contributors"><img src="https://img.shields.io/github/contributors/terra-project/houston"></a>
 
 Contributions are welcome to this project for helping Terra developers to build their dapps.

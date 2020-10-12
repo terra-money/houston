@@ -1,10 +1,17 @@
 {
   "name": "@terra-money/houston",
-  "version": "0.0.4",
+  "version": "0.3.4",
   "description": "Core module for Houston smart contract framework",
-  "main": "./lib/index.js",
+  "license": "MIT",
+  "author": "Hyungsuk Kang <hskang9@gmail.com>",
+  "homepage": "https://github.com/terra-project/houston/tree/master/packages/core#readme",
+  "repository": "https://github.com/terra-project/houston/tree/master/packages/core",
+  "bugs": {
+    "url": "https://github.com/terra-project/houston/issues"
+  },
+  "main": "./dist/index.js",
   "bin": {
-    "houston": "./lib/index.js"
+    "houston": "./dist/index.js"
   },
   "scripts": {
     "postinstall": "bash scripts/postinstall.sh",
@@ -15,33 +22,27 @@
     "build": "npm run clean:some && tsc -p .",
     "prepare": "yarn build",
     "global": "npm i -g && houston",
-    "clean:some": "rm -rf ./lib ./docs",
-    "clean:all": "rm -rf ./node_modules ./package-lock.json ./lib ./docs",
+    "clean:some": "rm -rf ./dist ./docs",
+    "clean:all": "rm -rf ./node_modules ./package-lock.json ./dist ./docs",
     "refresh": "npm run clean:all && npm install",
     "tscov": "tscov --min-coverage 90",
     "tscov:d": "tscov --details",
     "publish-package": "npm run build && npm publish",
     "docs": "typedoc --out docs ./src"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/caikang9/houston.git"
-  },
   "keywords": [
     "cli",
     "dev-tool"
   ],
-  "author": "Hyungsuk Kang <hskang9@gmail.com>",
-  "license": "GPL-3.0-or-later",
-  "bugs": {
-    "url": "https://github.com/caikang9/houston/issues"
-  },
-  "homepage": "https://github.com/caikang9/houston#readme",
   "dependencies": {
     "@liftr/tscov": "^1.4.7",
-    "@terra-money/houston-compile": "^0.1.2",
-    "@terra-money/houston-init": "^0.0.4",
-    "@terra-money/terra.js": "^0.4.9",
+    "@terra-money/houston-add": "^0.0.6",
+    "@terra-money/houston-compile": "^0.2.0",
+    "@terra-money/houston-config": "^0.1.8",
+    "@terra-money/houston-error": "^0.0.5",
+    "@terra-money/houston-init": "^0.2.1",
+    "@terra-money/houston-migrate": "^0.0.9",
+    "@terra-money/houston-provider": "^0.0.4",
     "@types/figlet": "^1.2.0",
     "@types/fs-extra": "^9.0.1",
     "@types/inquirer": "^6.5.0",
@@ -61,7 +62,7 @@
     "source-map-support": "^0.5.19",
     "string-similarity": "^4.0.2",
     "tslib": "^2.0.0",
-    "typescript": "^3.9.6",
+    "typescript": "^4.0.3",
     "util": "^0.12.3"
   },
   "devDependencies": {

@@ -1,10 +1,11 @@
 import init from "./init";
-import unbox from "./unbox";
+import add from "./add";
 import compile from "./compile";
+import migrate from "./migrate";
 
 export default {
   init,
   compile,
-  // obtain: require("./obtain"),
-  unbox,
+  migrate,
+  add,
 };

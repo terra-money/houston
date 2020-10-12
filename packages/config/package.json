@@ -3,12 +3,12 @@
   "description": "Utility for interacting with houston-config.js files",
   "license": "MIT",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
-  "homepage": "https://github.com/caikang9/houston/tree/master/packages/config#readme",
-  "repository": "https://github.com/caikang9/houston/tree/master/packages/config",
+  "homepage": "https://github.com/terra-project/houston/tree/master/packages/config#readme",
+  "repository": "https://github.com/terra-project/houston/tree/master/packages/config",
   "bugs": {
-    "url": "https://github.com/caikang9/houston/issues"
+    "url": "https://github.com/terra-project/houston/issues"
   },
-  "version": "0.0.7",
+  "version": "0.1.8",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
@@ -17,8 +17,8 @@
   },
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@terra-money/houston-events": "^0.0.3",
-    "@terra-money/houston-provider": "^0.0.2",
+    "@terra-money/houston-events": "^0.1.5",
+    "@terra-money/houston-provider": "^0.0.3",
     "configstore": "^4.0.0",
     "find-up": "^2.1.0",
     "lodash.assignin": "^4.2.0",
@@ -40,9 +40,8 @@
     "typescript": "3.9.6"
   },
   "keywords": [
-    "config",
-    "cosmos",
-    "houston"
+    "cli",
+    "dev-tool"
   ],
   "publishConfig": {
     "access": "public"

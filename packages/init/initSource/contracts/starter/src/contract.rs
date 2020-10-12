@@ -1,25 +1,20 @@
 use cosmwasm_std::{
-    log, to_binary, Api, Binary, Empty, Env,
-    Extern, HandleResponse, InitResponse, Querier, StdResult,
-    Storage
+    log, to_binary, Api, Binary, Empty, Env, Extern, HandleResponse, InitResponse, Querier,
+    StdResult, Storage,
 };
 
-use crate::msg::{
-    InitMsg, QueryMsg, HandleMsg, ConfigResponse, GetMessageResponse
-};
-use crate::state::{
-    config, config_get, Config, name_get, name_set
-};
+use crate::msg::{ConfigResponse, GetMessageResponse, HandleMsg, InitMsg, QueryMsg};
+use crate::state::{config, config_get, name_get, name_set, Config};
 
 /// Contract instantiation tx
 /// tx inputs are specified in InitMsg in msg.rs file
 pub fn init<S: Storage, A: Api, Q: Querier>(
     deps: &mut Extern<S, A, Q>,
-    env: Env,
+    _env: Env,
     msg: InitMsg,
 ) -> StdResult<InitResponse> {
     let state = Config {
-        default_name: msg.default_name
+        default_name: msg.default_name,
     };
 
     config(&mut deps.storage).save(&state)?;
@@ -36,14 +31,13 @@ pub fn handle<S: Storage, A: Api, Q: Querier>(
 ) -> StdResult<HandleResponse<Empty>> {
     match msg {
         HandleMsg::SetName { name } => try_set_name(deps, env, name),
-        
     }
 }
 
 fn try_set_name<S: Storage, A: Api, Q: Querier>(
     deps: &mut Extern<S, A, Q>,
     env: Env,
-    name: String
+    name: String,
 ) -> StdResult<HandleResponse> {
     let address_c = deps.api.canonical_address(&env.message.sender.clone())?;
     name_set(&mut deps.storage, address_c, name.clone())?;
@@ -60,26 +54,23 @@ fn try_set_name<S: Storage, A: Api, Q: Querier>(
     Ok(res)
 }
 
-
 pub fn query<S: Storage, A: Api, Q: Querier>(
     deps: &Extern<S, A, Q>,
     msg: QueryMsg,
 ) -> StdResult<Binary> {
     match msg {
-        QueryMsg::Config{} => {
+        QueryMsg::Config {} => {
             let config = config_get(&deps.storage)?;
             let out: Binary = to_binary(&ConfigResponse {
-                default_name: config.default_name
+                default_name: config.default_name,
             })?;
             Ok(out)
         }
-        QueryMsg::GetMessage{ address } => {
+        QueryMsg::GetMessage { address } => {
             let address_c = deps.api.canonical_address(&address)?;
             let name = name_get(&deps.storage, address_c).unwrap();
             let greeting = format!("Hello {}", name);
-            let out: Binary = to_binary(&GetMessageResponse {
-                greeting
-            })?;
+            let out: Binary = to_binary(&GetMessageResponse { greeting })?;
             Ok(out)
         }
     }
@@ -88,14 +79,12 @@ pub fn query<S: Storage, A: Api, Q: Querier>(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::state::{config, config_get,Config};
+    use crate::state::{config, config_get, Config};
     use cosmwasm_std::testing::{mock_dependencies, mock_env, MOCK_CONTRACT_ADDR};
 
     const CANONICAL_LENGTH: usize = 20;
 
     // TODO: Add test cases for each HandleMsg
     #[test]
-    fn set_name_works() {
-        
-    }
+    fn set_name_works() {}
 }

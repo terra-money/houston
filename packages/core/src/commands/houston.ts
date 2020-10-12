@@ -12,17 +12,14 @@ export const houston = program
   .command("init [options]", "create a Houston project", {
     executableFile: "./commands/houston-init",
   })
-  .command("unbox [cargos]", "download cargo from registry", {
-    executableFile: "./commands/houston-unbox",
+  .command("add [cargos]", "add a contract cargo to the project", {
+    executableFile: "./commands/houston-add",
   })
-  .command("compile [contracts]", "compile smart contract", {
+  .command("compile [contracts]", "compile smart contracts", {
     executableFile: "./commands/houston-compile",
   })
-  .command("deploy [contracts]", "deploy smart contract", {
-    executableFile: "./commands/houston-deploy",
-  })
-  .command("test [scripts]", "execute test scripts", {
-    executableFile: "./commands/houston-test",
+  .command("migrate [scripts]", "run migration scripts", {
+    executableFile: "./commands/houston-migrate",
   })
   .on("command:*", function(operands: string[]) {
     showError(`error: unknown command '${operands[0]}'`);

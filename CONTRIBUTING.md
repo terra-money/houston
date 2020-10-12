@@ -75,20 +75,14 @@ export const houston = program
   .command("init [options]", "create a Houston project", {
     executableFile: "./commands/houston-init",
   })
-  .command("unbox [cargos]", "download cargo from registry", {
-    executableFile: "./commands/houston-unbox",
-  })
   .command("compile [contracts]", "compile smart contract", {
     executableFile: "./commands/houston-compile",
   })
+  .command("migrate [scripts]", "run migration scripts", {
+    executableFile: "./commands/houston-migrate",
+  })
   .command("myCmd", "myCmd's description", {
     executableFile: "./commands/houston-myCmd",
-  })
-  .command("deploy [contracts]", "deploy smart contract", {
-    executableFile: "./commands/houston-deploy",
-  })
-  .command("test [scripts]", "execute test scripts", {
-    executableFile: "./commands/houston-test",
   })
   .on("command:*", function(operands: string[]) {
     showError(`error: unknown command '${operands[0]}'`);
@@ -111,7 +105,6 @@ Usage: houston <command> [options]
 
 Commands:
   mycmd     Run mycmd
-  build     Execute build pipeline (if configuration present)
 [...]
 ```
 
