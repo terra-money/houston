@@ -37,7 +37,7 @@ _Houston will gracefully setup **a stable version of rust compiler** and **wasm 
 Grab the latest version of [NPM](https://www.npmjs.com/package/@terra-money/houston):
 
 ```sh
-npm install -g houston
+npm install -g @terra-money/houston
 ```
 
 ## Documentation
@@ -54,11 +54,9 @@ To get more information on Houston, check out the documentation.
 
 `compile`: for compiling contracts
 
-`deploy`: for deploying contracts to blockchain
+`migrate`: for deploying contracts to blockchain
 
 `add`: for adding or downloading contract cargo projects
-
-`test`: for executing test scripts with Mocha and Chai
 
 To get help on each command, run `houston help <command>`.
 
@@ -78,26 +76,32 @@ myProject/
   | |- starter
   |- wasm
   |- schema
-  |- test
-  |- houston-config.js
+  |- migrations
+  | |- 0_deploy_starter.ts 
+  |- package.json
+  |- tsconfig.json
 ```
 
-`contracts`: contract directory for cosmwasm contract cargos
+`contracts`: directory for cosmwasm contracts
 
-`wasm`: wasm binary directory for compiled contracts
+`wasm`: wasm binaries of compiled contracts
 
-`schema`: generated schema for compiled contracts
+`schema`: generated schema of compiled contracts
 
 `test`: test script directory for contract interaction
 
-`starter`: a starter cosmwasm project
+`starter`: a starter cosmwasm contract cargo
+
+`package.json`: package manager for migration scripts
+
+`tsconfig.json`: Typscript configuration file for migration scripts
 
 ### Compile contracts
 
 Set current working directory inside of the project directory
 
 ```shell
-houston compile --contracts [contractName]
+houston compile [contractName]
 ```
 
 All contract cargos in the `contracts` directory will be compiled as default.
@@ -107,19 +111,19 @@ All contract cargos in the `contracts` directory will be compiled as default.
 Once this operation is initiated, you'll see the event in the console as below:
 
 ```shell
-Compiling your contracts...
+🛠 Compiling your contracts...
 ===========================
 ```
 
 After comilation of each contract, you'll get the directories for compiled results as below:
 
 ```shell
-> WASM written to /Users/terraformlabs/myProject/wasm
-> Schemas written to /Users/terraformlabs/myProject/schemas/starter_schemas
+> WASM written to /Users/.../<project folder>/wasm
+> Schemas written to /Users/.../<project folder>/schemas/<contract name>_schema
 ```
 
-Compiled WASM binaries will be placed in `wasm` directory as `<cargo name>`.wasm.
-Generated collection of schema json files will be placed as a directory with the name `<cargo name>-schema` in `schema` directory.
+Compiled WASM binaries will be placed in `wasm` directory as `<contract name>`.wasm.
+Generated collection of schema json files will be placed as a directory with the name `<contract name>-schema` in `schemas` directory.
 
 You will have the new project structure with the following items:
 
@@ -133,8 +137,19 @@ myProject/
   | |- starter-schema
   |   |- config.json
   |   |- ....
-  |- test
-  |- houston-config.js
+  | migrations
+  | |- 0_deploy_starter.ts
+  | package.json
+  | tsconfig.json
+```
+
+### Running migrations
+
+run your migraion scripts in `migrations` folder after installing packages with the following command:
+
+```shell
+npm install
+houston migrate 
 ```
 
 ## Contributions
