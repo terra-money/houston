@@ -1,0 +1,54 @@
+{
+  "name": "@terra-money/houston-compile",
+  "description": "houston compile functionality",
+  "license": "MIT",
+  "author": "Hyungsuk Kang <hskang9@gmail.com>",
+  "homepage": "https://github.com/hskang9/houston/tree/master/packages/compile#readme",
+  "repository": "https://github.com/hskang9/houston/tree/master/packages/compile",
+  "bugs": {
+    "url": "https://github.com/caikang9/houston/issues"
+  },
+  "version": "0.1.5",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "yarn build",
+    "test": "yarn build && mocha --exit -r ts-node/register test/**/*.test.ts"
+  },
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@terra-money/houston-config": "^0.0.5",
+    "@terra-money/houston-events": "^0.0.3",
+    "@terra-money/houston-provider": "^0.0.2",
+    "chalk": "^4.1.0",
+    "configstore": "^4.0.0",
+    "find-up": "^2.1.0",
+    "fs-extra": "^9.0.1",
+    "lodash.assignin": "^4.2.0",
+    "lodash.merge": "^4.6.2",
+    "module": "^1.2.5",
+    "original-require": "1.0.1",
+    "path": "^0.12.7",
+    "source-map-support": "^0.5.19"
+  },
+  "devDependencies": {
+    "@types/configstore": "^4.0.0",
+    "@types/find-up": "^2.1.0",
+    "@types/lodash.assignin": "^4.2.6",
+    "@types/lodash.merge": "^4.6.6",
+    "@types/node": "^14.10.1",
+    "@types/sinon": "^7.0.13",
+    "mocha": "8.0.1",
+    "sinon": "9.0.2",
+    "ts-node": "8.10.2"
+  },
+  "keywords": [
+    "config",
+    "cosmos",
+    "houston"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "3b571d9da1d4b708e81f3063c499f49ea1ab7c9f"
+}

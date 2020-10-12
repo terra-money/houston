@@ -1,0 +1,5 @@
+[alias]
+wasm = "build --release --target wasm32-unknown-unknown --out-dir ../../wasm -Z unstable-options"
+unit-test = "test --lib --features backtraces"
+integration-test = "test --test integration"
+schema = "run --example schema"

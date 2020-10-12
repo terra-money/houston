@@ -1,0 +1,52 @@
+{
+  "name": "@terra-money/houston-provider",
+  "version": "0.0.3",
+  "description": "Network provider module for Houston",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "npm run build && npm run global",
+    "test": "npm run lint && npm run test:unit",
+    "test:unit": "mocha src/**/*.spec.ts",
+    "lint": "tslint -p . --fix",
+    "build": "npm run clean:some && tsc -p .",
+    "prepare": "yarn build",
+    "global": "npm i -g && houston",
+    "clean:some": "rm -rf ./lib ./docs",
+    "clean:all": "rm -rf ./node_modules ./package-lock.json ./lib ./docs",
+    "refresh": "npm run clean:all && npm install",
+    "tscov": "tscov --min-coverage 90",
+    "tscov:d": "tscov --details",
+    "publish-package": "npm run build && npm publish",
+    "docs": "typedoc --out docs ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/caikang9/houston/provider"
+  },
+  "keywords": [
+    "provider",
+    "terra",
+    "tool"
+  ],
+  "author": "Hyungsuk Kang <hskang9@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "@liftr/tscov": "^1.4.7",
+    "@types/node": "^14.0.27",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.1",
+    "mocha-junit-reporter": "^1.23.3",
+    "tslint": "^6.1.2",
+    "typedoc": "^0.17.7",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "@terra-money/terra.js": "^0.4.11",
+    "debug": "^4.1.1",
+    "houston-error": "^0.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "3b571d9da1d4b708e81f3063c499f49ea1ab7c9f"
+}

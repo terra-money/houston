@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GetMessageResponse",
+  "type": "object",
+  "required": [
+    "greeting"
+  ],
+  "properties": {
+    "greeting": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "@terra-money/houston-error",
+  "version": "0.0.2",
+  "description": "Simple module that allows native Error objects to be extended",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "yarn build"
+  },
+  "repository": "https://github.com/caikang9/houston/tree/master/packages/error",
+  "keywords": [
+    "cosmos",
+    "houston",
+    "error",
+    "extendable"
+  ],
+  "author": "Hyungsuk Kang <hskang9@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/caikang9/houston"
+  },
+  "homepage": "https://github.com/caikang9/houston/tree/master/packages/error#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "extendable-error": "^0.1.7"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.27",
+    "ts-node": "8.10.2",
+    "typescript": "3.9.6"
+  },
+  "gitHead": "3b571d9da1d4b708e81f3063c499f49ea1ab7c9f"
+}

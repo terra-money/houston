@@ -1,0 +1,96 @@
+{
+  "name": "@terra-money/houston",
+  "version": "0.0.4",
+  "description": "Core module for Houston smart contract framework",
+  "main": "./lib/index.js",
+  "bin": {
+    "houston": "./lib/index.js"
+  },
+  "scripts": {
+    "postinstall": "bash scripts/postinstall.sh",
+    "start": "npm run build && npm run global",
+    "test": "npm run lint && npm run test:unit",
+    "test:unit": "mocha src/**/*.spec.ts",
+    "lint": "tslint -p . --fix",
+    "build": "npm run clean:some && tsc -p .",
+    "prepare": "yarn build",
+    "global": "npm i -g && houston",
+    "clean:some": "rm -rf ./lib ./docs",
+    "clean:all": "rm -rf ./node_modules ./package-lock.json ./lib ./docs",
+    "refresh": "npm run clean:all && npm install",
+    "tscov": "tscov --min-coverage 90",
+    "tscov:d": "tscov --details",
+    "publish-package": "npm run build && npm publish",
+    "docs": "typedoc --out docs ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caikang9/houston.git"
+  },
+  "keywords": [
+    "cli",
+    "dev-tool"
+  ],
+  "author": "Hyungsuk Kang <hskang9@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/caikang9/houston/issues"
+  },
+  "homepage": "https://github.com/caikang9/houston#readme",
+  "dependencies": {
+    "@liftr/tscov": "^1.4.7",
+    "@terra-money/houston-compile": "^0.1.2",
+    "@terra-money/houston-init": "^0.0.4",
+    "@terra-money/terra.js": "^0.4.9",
+    "@types/figlet": "^1.2.0",
+    "@types/fs-extra": "^9.0.1",
+    "@types/inquirer": "^6.5.0",
+    "@types/node": "^14.0.14",
+    "chalk": "^4.1.0",
+    "clear": "^0.1.0",
+    "commander": "^5.1.0",
+    "config": "^3.3.1",
+    "figlet": "^1.4.0",
+    "fs-extra": "^9.0.1",
+    "inquirer": "^7.3.3",
+    "inversify": "^5.0.1",
+    "kleur": "^4.0.2",
+    "nodemon": "^2.0.4",
+    "path": "^0.12.7",
+    "reflect-metadata": "^0.1.13",
+    "source-map-support": "^0.5.19",
+    "string-similarity": "^4.0.2",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.6",
+    "util": "^0.12.3"
+  },
+  "devDependencies": {
+    "@liftr/tscov": "^1.4.7",
+    "@types/bluebird": "^3.5.32",
+    "@types/chai": "^4.2.11",
+    "@types/figlet": "^1.2.0",
+    "@types/fs-extra": "^9.0.1",
+    "@types/inquirer": "^6.5.0",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^14.0.14",
+    "@types/sinon": "^9.0.0",
+    "@types/sinon-chai": "^3.2.4",
+    "@types/string-similarity": "^3.0.0",
+    "bluebird": "^3.7.2",
+    "chai": "^4.0.0",
+    "lerna": "^3.22.1",
+    "mocha": "^7.1.1",
+    "mocha-junit-reporter": "^1.23.3",
+    "nyc": "^15.0.1",
+    "sinon": "^9.0.1",
+    "sinon-chai": "^3.5.0",
+    "ts-node": "^8.10.2",
+    "tslint": "^6.1.2",
+    "typedoc": "^0.17.7",
+    "typescript": "^3.9.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "3b571d9da1d4b708e81f3063c499f49ea1ab7c9f"
+}
