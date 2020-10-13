@@ -20,7 +20,9 @@
 <p align="center"><strong>Houston is a development environment, testing framework and smart contract pipeline for Terra, aiming to make life as a Terra developer easier.</strong>
 </p>
 
-** 🚨 Houston is now currently in Beta version. use it with your own caution. **
+<p align="center"><strong>
+** 🚨 Houston is now currently in Beta version. Completed version is not ready yet. use it with your own caution. **</strong>
+</p>
 
 ## Features
 
