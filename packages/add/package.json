@@ -1,6 +1,6 @@
 {
   "name": "@terra-money/houston-add",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "houston contract cargo management library",
   "license": "MIT",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
