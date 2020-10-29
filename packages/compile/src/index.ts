@@ -52,7 +52,7 @@ export const compile = async (name: any) => {
         if (error.compile_error) {
           let { errors } = error;
           events.emit("compile:fail", { contractDirectory: targetDir, errors });
-          return;
+          process.exit(1);
         }
         let { warnings } = error;
         events.emit("compile:warn", { contractDirectory: targetDir, warnings });
