@@ -1,6 +1,6 @@
 {
   "name": "@terra-money/houston",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "Core module for Houston smart contract framework",
   "license": "MIT",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
@@ -36,8 +36,8 @@
   ],
   "dependencies": {
     "@liftr/tscov": "^1.4.7",
-    "@terra-money/houston-add": "^0.0.6",
-    "@terra-money/houston-compile": "^0.2.0",
+    "@terra-money/houston-add": "^0.0.8",
+    "@terra-money/houston-compile": "^0.2.1",
     "@terra-money/houston-config": "^0.2.0",
     "@terra-money/houston-error": "^0.0.5",
     "@terra-money/houston-init": "^0.2.1",

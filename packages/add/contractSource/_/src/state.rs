@@ -10,7 +10,7 @@ pub static NAME_KEY: &[u8] = b"name";
 /// Config struct
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct Config {
-    /// nam in config
+    /// name in config
     pub default_name: String,
 }
 
