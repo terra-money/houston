@@ -1,5 +1,6 @@
 {
   "name": "@terra-money/houston-migrate",
+  "version": "0.0.10",
   "description": "houston migration functionality",
   "license": "MIT",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
@@ -8,7 +9,6 @@
   "bugs": {
     "url": "https://github.com/terra-project/houston/issues"
   },
-  "version": "0.0.9",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
@@ -17,14 +17,13 @@
   },
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@terra-money/houston-config": "^0.1.8",
+    "@terra-money/houston-config": "^0.2.2",
     "chalk": "^4.1.0",
     "configstore": "^4.0.0",
     "find-up": "^2.1.0",
     "fs-extra": "^9.0.1",
     "lodash.assignin": "^4.2.0",
     "lodash.merge": "^4.6.2",
-    "module": "^1.2.5",
     "original-require": "1.0.1",
     "path": "^0.12.7",
     "source-map-support": "^0.5.19"
@@ -36,9 +35,10 @@
     "@types/lodash.merge": "^4.6.6",
     "@types/node": "^14.10.1",
     "@types/sinon": "^7.0.13",
-    "mocha": "8.0.1",
+    "mocha": "^8.3.2",
     "sinon": "9.0.2",
-    "ts-node": "8.10.2"
+    "ts-node": "^9",
+    "typescript": "^4"
   },
   "keywords": [
     "houston"

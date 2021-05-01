@@ -1,6 +1,6 @@
 {
   "name": "@terra-money/houston-init",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "houston project initialization functionality",
   "license": "MIT",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
@@ -31,8 +31,7 @@
     "init"
   ],
   "dependencies": {
-    "@terra-money/houston-config": "0.1.8",
-    "@types/node": "^14.10.0",
+    "@terra-money/houston-config": "^0.2.2",
     "find-up": "^4.1.0",
     "json-schema-class": "0.0.1",
     "lodash": "^4.17.19",
@@ -42,7 +41,7 @@
   "devDependencies": {
     "@types/node": "^14.0.27",
     "tslint": "^5.12.1",
-    "typescript": "^3.9.7"
+    "typescript": "^4"
   },
   "publishConfig": {
     "access": "public"

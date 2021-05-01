@@ -1,5 +1,6 @@
 {
   "name": "@terra-money/houston-instruction",
+  "version": "0.0.0",
   "description": "A higher order component for API and configuraiton component for smart contracts in heterogeneous blockchains",
   "license": "MIT",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
@@ -8,7 +9,6 @@
   "bugs": {
     "url": "https://github.com/terra-project/houston/issues"
   },
-  "version": "0.0.0",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
@@ -17,32 +17,32 @@
   },
   "types": "dist/index.d.ts",
   "dependencies": {
+    "@terra-money/houston-config": "^0.2.2",
     "@terra-money/houston-events": "^0.1.4",
-    "@terra-money/houston-provider": "^0.0.3",
+    "@terra-money/houston-provider": "^0.0.5",
     "configstore": "^4.0.0",
     "find-up": "^2.1.0",
     "lodash.assignin": "^4.2.0",
     "lodash.merge": "^4.6.2",
-    "module": "^1.2.5",
     "original-require": "1.0.1",
     "source-map-support": "^0.5.19"
   },
   "devDependencies": {
+    "@liftr/tscov": "^1.4.7",
     "@types/configstore": "^4.0.0",
     "@types/find-up": "^2.1.0",
     "@types/lodash.assignin": "^4.2.6",
     "@types/lodash.merge": "^4.6.6",
+    "@types/node": "^14.0.27",
     "@types/sinon": "^7.0.13",
-    "mocha": "8.0.1",
+    "chai": "^4.2.0",
+    "mocha": "^8.3.2",
+    "mocha-junit-reporter": "^1.23.3",
     "sinon": "9.0.2",
     "ts-node": "8.10.2",
-    "typescript": "3.9.6",
-    "@liftr/tscov": "^1.4.7",
-    "@types/node": "^14.0.27",
-    "chai": "^4.2.0",
-    "mocha-junit-reporter": "^1.23.3",
     "tslint": "^6.1.2",
-    "typedoc": "^0.17.7"
+    "typedoc": "^0.17.7",
+    "typescript": "3.9.6"
   },
   "keywords": [
     "config",

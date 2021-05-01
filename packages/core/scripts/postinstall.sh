@@ -6,8 +6,8 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 source $HOME/.cargo/env
 # Update Rust 
 rustup update stable
-rustup update nightly
+# rustup update nightly
 # Get wasm target option
 rustup target list --installed
-rustup default nightly
+# rustup default nightly
 rustup target add wasm32-unknown-unknown
