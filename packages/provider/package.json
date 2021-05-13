@@ -1,6 +1,6 @@
 {
   "name": "@terra-money/houston-provider",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Network provider module for Houston",
   "license": "MIT",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
@@ -16,7 +16,7 @@
     "test:unit": "mocha src/**/*.spec.ts",
     "lint": "tslint -p . --fix",
     "build": "npm run clean:some && tsc -p .",
-    "prepare": "yarn build",
+    "prepare": "npm run build",
     "global": "npm i -g && houston",
     "clean:some": "rm -rf ./lib ./docs",
     "clean:all": "rm -rf ./node_modules ./package-lock.json ./lib ./docs",
@@ -33,16 +33,13 @@
   ],
   "devDependencies": {
     "@liftr/tscov": "^1.4.7",
-    "@types/node": "^14.0.27",
-    "chai": "^4.2.0",
-    "mocha": "^7.1.1",
-    "mocha-junit-reporter": "^1.23.3",
+    "@types/node": "^15.0.3",
     "tslint": "^6.1.2",
     "typedoc": "^0.17.7",
     "typescript": "^4"
   },
   "dependencies": {
-    "@terra-money/houston-error": "^0.0.6",
+    "@terra-money/houston-error": "^0.0.7",
     "@terra-money/terra.js": "^1",
     "debug": "^4.1.1"
   },

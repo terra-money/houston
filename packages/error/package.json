@@ -1,6 +1,6 @@
 {
   "name": "@terra-money/houston-error",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Simple module that allows native Error objects to be extended",
   "license": "MIT",
   "author": "Hyungsuk Kang <hskang9@gmail.com>",
@@ -22,11 +22,11 @@
     "access": "public"
   },
   "dependencies": {
-    "@terra-money/houston-add": "^0.0.9",
+    "@terra-money/houston-add": "^0.0.10",
     "extendable-error": "^0.1.7"
   },
   "devDependencies": {
-    "@types/node": "^14.0.27",
+    "@types/node": "^15.0.3",
     "ts-node": "^9",
     "typescript": "^4"
   },
